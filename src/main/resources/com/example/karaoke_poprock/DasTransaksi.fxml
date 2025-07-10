@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="842.0" prefWidth="1190.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.karaoke_poprock.DasTransaksi">
+   <children>
+      <StackPane prefHeight="842.0" prefWidth="1190.0">
+         <children>
+            <Pane fx:id="pnlHomeTransaksi" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="844.0" fitWidth="1190.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imgs/DashboardKasirTrns.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane fx:id="pnlTransaksi" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="842.0" fitWidth="1190.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imgs/DashTransaksi.png" />
+                     </image></ImageView>
+                  <Button fx:id="btnTrRuangan" blendMode="LIGHTEN" layoutX="363.0" layoutY="228.0" mnemonicParsing="false" onAction="#handleTransaksiClicks" prefHeight="237.0" prefWidth="355.0" stylesheets="@design.css" />
+                  <Button fx:id="btnTrMenu" blendMode="LIGHTEN" layoutX="805.0" layoutY="228.0" mnemonicParsing="false" onAction="#handleTransaksiClicks" prefHeight="237.0" prefWidth="355.0" stylesheets="@design.css" />
+                  <Button fx:id="btnTrMember" blendMode="LIGHTEN" layoutX="586.0" layoutY="512.0" mnemonicParsing="false" onAction="#handleTransaksiClicks" prefHeight="237.0" prefWidth="355.0" stylesheets="@design.css" />
+               </children>
+            </Pane>
+            <Pane fx:id="pnlTransaksiRuangan" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="844.0" fitWidth="1190.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imgs/TransPembayaranR.png" />
+                     </image>
+                  </ImageView>
+                  <DatePicker fx:id="tglTransaksiRuangan" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="813.0" layoutY="241.0" pickOnBounds="false" scaleShape="false" style="-fx-background-color: #ffffff;" />
+                  <TextField fx:id="txtIdMember" layoutX="413.0" layoutY="228.0" prefHeight="50.0" prefWidth="221.0" style="-fx-background-color: #ffffff;" />
+                  <TextField fx:id="txtNamaTransaksi" layoutX="413.0" layoutY="366.0" prefHeight="50.0" prefWidth="303.0" style="-fx-background-color: #ffffff;" />
+                  <TextField fx:id="txtNotelpTransaksi" layoutX="413.0" layoutY="453.0" prefHeight="50.0" prefWidth="303.0" style="-fx-background-color: #ffffff;" />
+                  <TextField fx:id="txtDiskonTR" layoutX="795.0" layoutY="226.0" prefHeight="50.0" prefWidth="303.0" style="-fx-background-color: #ffffff;" />
+                  <TextField fx:id="txtPembayaran" layoutX="402.0" layoutY="765.0" prefHeight="24.0" prefWidth="137.0" style="-fx-background-color: #ffffff;" />
+                  <Pane layoutX="765.0" layoutY="347.0" prefHeight="341.0" prefWidth="362.0" style="-fx-background-radius: 15;">
+                     <children>
+                        <ScrollPane prefHeight="341.0" prefWidth="362.0" style="-fx-background-radius: 15;">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="338.0" prefWidth="362.0" style="-fx-background-radius: 15;">
+                                 <children>
+                                    <ListView fx:id="dataRuangan" prefHeight="328.0" prefWidth="355.0" style="-fx-background-radius: 15;" />
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </ScrollPane>
+                     </children>
+                  </Pane>
+                  <Label fx:id="lblTotalPenyewaan" layoutX="590.0" layoutY="679.0" prefHeight="17.0" prefWidth="157.0" textFill="WHITE" />
+                  <Label fx:id="lblTotalKembali" layoutX="561.0" layoutY="799.0" prefHeight="17.0" prefWidth="107.0" textFill="WHITE">
+                     <font>
+                        <Font name="Impact" size="12.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnbyrRuangan" blendMode="LIGHTEN" layoutX="990.0" layoutY="795.0" mnemonicParsing="false" onAction="#onClickBayar" prefHeight="31.0" prefWidth="143.0" stylesheets="@design.css" />
+                  <ComboBox fx:id="cbJamMulai" layoutX="409.0" layoutY="547.0" prefHeight="43.0" prefWidth="150.0" />
+                  <ComboBox fx:id="cbJamSelesai" layoutX="579.0" layoutY="547.0" prefHeight="43.0" prefWidth="150.0" />
+                  <Label fx:id="lblDurasi" layoutX="593.0" layoutY="631.0" prefHeight="17.0" prefWidth="150.0" textFill="WHITE" />
+                  <Button fx:id="btnHitungRuangan" blendMode="LIGHTEN" layoutX="990.0" layoutY="735.0" mnemonicParsing="false" onAction="#onClickHitung" prefHeight="31.0" prefWidth="143.0" stylesheets="@design.css" />
+                  <Button fx:id="btnBatalRuangan" blendMode="LIGHTEN" layoutX="798.0" layoutY="733.0" mnemonicParsing="false" onAction="#onClickBatal" prefHeight="31.0" prefWidth="143.0" stylesheets="@design.css" />
+                  <Label fx:id="tglTrans" layoutX="729.0" layoutY="99.0" text="Tanggal Transaksi" textFill="WHITE">
+                     <font>
+                        <Font name="Impact" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </StackPane>
+      <VBox prefHeight="844.0" prefWidth="330.0">
+         <children>
+            <AnchorPane prefHeight="845.0" prefWidth="330.0">
+               <children>
+                  <Button fx:id="btnTransaksi" layoutY="333.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="98.0" prefWidth="330.0" stylesheets="@design.css" text="Transaksi">
+                     <font>
+                        <Font name="Britannic Bold" size="40.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnHomeTransaksi" layoutY="136.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="98.0" prefWidth="330.0" stylesheets="@design.css" text="Home">
+                     <font>
+                        <Font name="Britannic Bold" size="40.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnMemberTransaksi" layoutY="235.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="98.0" prefWidth="330.0" stylesheets="@design.css" text="Member">
+                     <font>
+                        <Font name="Britannic Bold" size="40.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="lblNamaKaryawan" layoutX="136.0" layoutY="41.0" prefHeight="31.0" prefWidth="85.0" style="-fx-background-color: #413277;" text="Nama karyawan" textFill="WHITE">
+                     <font>
+                        <Font name="Impact" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

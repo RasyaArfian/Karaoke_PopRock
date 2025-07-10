@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="842.0" prefWidth="1190.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.karaoke_poprock.DasHome">
+   <children>
+      <StackPane prefHeight="847.0" prefWidth="1190.0">
+         <children>
+            <Pane fx:id="pnlUpdateMenu" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="847.0" fitWidth="1191.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imgs/UpdateMenu.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="txtUpdateNamaMenu" layoutX="409.0" layoutY="286.0" prefHeight="36.0" prefWidth="330.0" style="-fx-background-color: #ffffff;" />
+                  <Button fx:id="btnUpdateMenu" blendMode="SCREEN" layoutX="1062.0" layoutY="766.0" mnemonicParsing="false" onAction="#onClickupdateMenu" prefHeight="43.0" prefWidth="104.0" style="-fx-background-radius: 15;" stylesheets="@design.css" />
+                  <TextField fx:id="txtUpdateHargaMenu" layoutX="409.0" layoutY="434.0" prefHeight="36.0" prefWidth="330.0" style="-fx-background-color: #ffffff;" />
+                  <ComboBox fx:id="txtUpdateTipeMenu" layoutX="409.0" layoutY="360.0" prefHeight="36.0" prefWidth="330.0" />
+                  <TextField fx:id="txtUpdateIdMenu" layoutX="932.0" layoutY="462.0" prefHeight="29.0" prefWidth="87.0" style="-fx-background-color: #ffffff;" />
+                  <Button fx:id="btnkembaliUpdateMenu" blendMode="SCREEN" layoutX="932.0" layoutY="766.0" mnemonicParsing="false" onAction="#handleClicksKembali" prefHeight="43.0" prefWidth="104.0" style="-fx-background-radius: 15;" stylesheets="@design.css" />
+               </children>
+            </Pane>
+            <Pane fx:id="pnlRuangan" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="844.0" fitWidth="1193.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imgs/Ruangan%20Admin.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="txtsearchRuangan" blendMode="MULTIPLY" layoutX="558.0" layoutY="192.0" onAction="#searchRuangan" prefHeight="36.0" prefWidth="302.0" />
+                  <Button fx:id="createRuangan" layoutX="365.0" layoutY="192.0" mnemonicParsing="false" onAction="#onClickBtnTambah" prefHeight="36.0" prefWidth="152.0" stylesheets="@design.css" text="TAMBAH" textFill="WHITE">
+                     <font>
+                        <Font name="Britannic Bold" size="20.0" />
+                     </font>
+                  </Button>
+                  <Pane layoutX="342.0" layoutY="240.0" prefHeight="583.0" prefWidth="834.0">
+                     <children>
+                        <ListView fx:id="viewRuangan" layoutX="11.0" layoutY="59.0" prefHeight="490.0" prefWidth="819.0" />
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="pnlMember" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="847.0" fitWidth="1190.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imgs/MemberAdmin.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="createMember" blendMode="SCREEN" layoutX="365.0" layoutY="198.0" mnemonicParsing="false" onAction="#onClickBtnTambah" prefHeight="36.0" prefWidth="152.0" style="-fx-background-radius: 15;" stylesheets="@design.css" />
+                  <Pane layoutX="355.0" layoutY="257.0" prefHeight="542.0" prefWidth="819.0">
+                     <children>
+                        <ListView fx:id="viewMember" layoutY="44.0" prefHeight="498.0" prefWidth="819.0" style="-fx-background-color: #ffffff;" />
+                     </children>
+                  </Pane>
+                  <TextField layoutX="569.0" layoutY="191.0" prefHeight="43.0" prefWidth="293.0" style="-fx-background-color: #ffffff;" />
+               </children>
+            </Pane>
+            <Pane fx:id="pnlMenu" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="847.0" fitWidth="1299.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imgs/MenuAdmin.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="createMenu" blendMode="SCREEN" layoutX="363.0" layoutY="194.0" mnemonicParsing="false" onAction="#onClickBtnTambah" prefHeight="36.0" prefWidth="158.0" style="-fx-background-radius: 15;" stylesheets="@design.css" />
+                  <Pane layoutX="356.0" layoutY="256.0" prefHeight="542.0" prefWidth="819.0">
+                     <children>
+                        <ListView fx:id="viewMenu" layoutX="-1.0" layoutY="44.0" prefHeight="498.0" prefWidth="819.0" style="-fx-background-color: #ffffff;" />
+                     </children>
+                  </Pane>
+                  <TextField fx:id="txtsearchMenu" layoutX="560.0" layoutY="194.0" onAction="#searchMenu" prefHeight="36.0" prefWidth="302.0" />
+               </children>
+            </Pane>
+            <Pane fx:id="pnlKaryawan" prefHeight="200.0" prefWidth="1151.0">
+               <children>
+                  <ImageView fitHeight="847.0" fitWidth="1190.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imgs/KaryawanAdmin.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="createkaryawan" blendMode="SCREEN" layoutX="366.0" layoutY="194.0" mnemonicParsing="false" onAction="#onClickBtnTambah" prefHeight="36.0" prefWidth="152.0" style="-fx-background-radius: 15;" stylesheets="@design.css" />
+                  <Pane layoutX="352.0" layoutY="257.0" prefHeight="542.0" prefWidth="825.0">
+                     <children>
+                        <ListView fx:id="viewKaryawan" layoutY="44.0" prefHeight="498.0" prefWidth="825.0" style="-fx-background-color: #ffffff;" />
+                        <Text fill="WHITE" fontSmoothingType="LCD" layoutX="133.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID">
+                           <font>
+                              <Font name="Britannic Bold" size="14.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" fontSmoothingType="LCD" layoutX="201.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nama">
+                           <font>
+                              <Font name="Britannic Bold" size="14.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" fontSmoothingType="LCD" layoutX="326.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NoTelp">
+                           <font>
+                              <Font name="Britannic Bold" size="14.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" fontSmoothingType="LCD" layoutX="456.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User">
+                           <font>
+                              <Font name="Britannic Bold" size="14.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" fontSmoothingType="LCD" layoutX="547.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Role">
+                           <font>
+                              <Font name="Britannic Bold" size="14.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+                  <TextField fx:id="txtsearchKaryawan" layoutX="558.0" layoutY="194.0" onAction="#searchKaryawan" prefHeight="36.0" prefWidth="302.0" />
+               </children>
+            </Pane>
+            <Pane fx:id="pnlUpdateMember" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="847.0" fitWidth="1191.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imgs/Updatemember.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="txtUpdateTipeMember" layoutX="412.0" layoutY="292.0" prefHeight="36.0" prefWidth="330.0" promptText="Isi tipe member" style="-fx-background-color: #ffffff;" />
+                  <TextField fx:id="txtUpdateDiskonMember" layoutX="412.0" layoutY="368.0" prefHeight="36.0" prefWidth="330.0" promptText="Isi diskon member" style="-fx-background-color: #ffffff;" />
+                  <TextField fx:id="txtUpdateHargaMember" layoutX="412.0" layoutY="439.0" prefHeight="36.0" prefWidth="330.0" promptText="Isi harga member" style="-fx-background-color: #ffffff;" />
+                  <TextField fx:id="txtIUpdatedMember" layoutX="930.0" layoutY="449.0" prefHeight="25.0" prefWidth="87.0" style="-fx-background-color: #ffffff;" />
+                  <Button fx:id="btnUpdateMember" blendMode="SCREEN" layoutX="1063.0" layoutY="766.0" mnemonicParsing="false" onAction="#onClickupdateMember" prefHeight="43.0" prefWidth="104.0" style="-fx-background-radius: 15;" stylesheets="@design.css" />
+                  <Button fx:id="btnKembaliUpdateMember" blendMode="SCREEN" layoutX="932.0" layoutY="766.0" mnemonicParsing="false" onAction="#handleClicksKembali" prefHeight="43.0" prefWidth="104.0" style="-fx-background-radius: 15;" stylesheets="@design.css" />
+               </children>
+            </Pane>
+            <Pane fx:id="pnlUpdateKaryawan" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="847.0" fitWidth="1190.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imgs/UpdateKaryawan.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="txtUpdatenamaKaryawan" layoutX="409.0" layoutY="294.0" prefHeight="36.0" prefWidth="330.0" promptText="Isi nama karyawan" style="-fx-background-color: #ffffff;" />
+                  <TextField fx:id="txtUpdateNotelpkaryawan" layoutX="409.0" layoutY="368.0" prefHeight="36.0" prefWidth="330.0" promptText="Isi nomor telfon karyawan" style="-fx-background-color: #ffffff;" />
+                  <TextField fx:id="txtUpdateUsernameKaryawan" layoutX="409.0" layoutY="446.0" prefHeight="36.0" prefWidth="330.0" promptText="Isi username karyawan" style="-fx-background-color: #ffffff;" />
+                  <TextField fx:id="txtUpdatePasswordKaryawaan" layoutX="409.0" layoutY="519.0" prefHeight="36.0" prefWidth="330.0" promptText="Isi password karyawan" style="-fx-background-color: #ffffff;" />
+                  <TextField fx:id="txtUpdateIdkaryawan" layoutX="918.0" layoutY="585.0" prefHeight="25.0" prefWidth="87.0" style="-fx-background-color: #ffffff;" />
+                  <ComboBox fx:id="txtUpdateRoleKaryawan" layoutX="409.0" layoutY="592.0" prefHeight="36.0" prefWidth="330.0" promptText="Isi role karyawan" style="-fx-background-color: #ffffff;" />
+                  <Button fx:id="btnUpdateKaryawan" blendMode="SCREEN" layoutX="1063.0" layoutY="764.0" mnemonicParsing="false" onAction="#onClickupdateKaryawan" prefHeight="43.0" prefWidth="104.0" style="-fx-background-radius: 15;" stylesheets="@design.css" />
+                  <Button fx:id="btnKembaliUpdateKaryawan" blendMode="SCREEN" layoutX="935.0" layoutY="766.0" mnemonicParsing="false" onAction="#handleClicksKembali" prefHeight="43.0" prefWidth="104.0" style="-fx-background-radius: 15;" stylesheets="@design.css" />
+               </children>
+            </Pane>
+            <Pane fx:id="pnlTambahKaryawan" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="857.0" fitWidth="1190.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imgs/TambahKaryawan.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="txtnamaKaryawan" layoutX="410.0" layoutY="294.0" prefHeight="36.0" prefWidth="330.0" promptText="Isi nama karyawan" style="-fx-background-color: #ffffff;" />
+                  <TextField fx:id="txtNotelpkaryawan" layoutX="410.0" layoutY="368.0" prefHeight="36.0" prefWidth="330.0" promptText="Isi nomor telfon karyawan" style="-fx-background-color: #ffffff;" />
+                  <TextField fx:id="txtUsernameKaryawan" layoutX="410.0" layoutY="447.0" prefHeight="36.0" prefWidth="330.0" promptText="Isi username karyawan" style="-fx-background-color: #ffffff;" />
+                  <TextField fx:id="txtPasswordKaryawaan" layoutX="410.0" layoutY="521.0" prefHeight="36.0" prefWidth="330.0" promptText="Isi password karyawan" style="-fx-background-color: #ffffff;" />
+                  <ComboBox fx:id="txtRoleKaryawan" layoutX="410.0" layoutY="592.0" prefHeight="36.0" prefWidth="330.0" promptText="Isi role karyawan" style="-fx-background-color: #ffffff;" />
+                  <TextField fx:id="txtIdkaryawan" layoutX="916.0" layoutY="582.0" prefHeight="29.0" prefWidth="87.0" style="-fx-background-color: #ffffff;" />
+                  <Button fx:id="btnTambahKaryawan" blendMode="SCREEN" layoutX="1062.0" layoutY="766.0" mnemonicParsing="false" onAction="#onClicktambahKaryawan" prefHeight="43.0" prefWidth="104.0" style="-fx-background-radius: 15;" stylesheets="@design.css" />
+                  <Button fx:id="btnKembaliKaryawan" blendMode="SCREEN" layoutX="933.0" layoutY="766.0" mnemonicParsing="false" onAction="#handleClicksKembali" prefHeight="43.0" prefWidth="104.0" style="-fx-background-radius: 15;" stylesheets="@design.css" />
+               </children>
+            </Pane>
+            <Pane fx:id="pnltambahRuangan" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="844.0" fitWidth="1193.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imgs/Tambah%20Ruangan.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="txtNamaR" layoutX="402.0" layoutY="287.0" prefHeight="36.0" prefWidth="330.0" promptText="Isi nama ruangan" style="-fx-background-color: #ffffff;" />
+                  <ComboBox fx:id="txtTipeR" editable="true" layoutX="398.0" layoutY="361.0" prefHeight="36.0" prefWidth="330.0" promptText="Isi tipe ruangan" style="-fx-background-color: #ffffff;" />
+                  <TextField fx:id="txtKapasitas" layoutX="402.0" layoutY="436.0" prefHeight="36.0" prefWidth="330.0" promptText="isi kapasitas ruangan" style="-fx-background-color: #ffffff;" />
+                  <TextField fx:id="txtTarifR" layoutX="402.0" layoutY="510.0" prefHeight="36.0" prefWidth="330.0" promptText="Isi tarif per-jam ruangan" style="-fx-background-color: #ffffff;" />
+                  <TextField fx:id="txtIdR" disable="true" editable="false" layoutX="916.0" layoutY="518.0" prefHeight="29.0" prefWidth="104.0" style="-fx-background-color: #ffffff;" />
+                  <Button fx:id="btnTambahR" blendMode="SCREEN" layoutX="1059.0" layoutY="763.0" mnemonicParsing="false" onAction="#onClicktambah" prefHeight="43.0" prefWidth="104.0" style="-fx-background-radius: 15;" stylesheets="@design.css" />
+                  <Button fx:id="btnKembaliR" blendMode="SCREEN" layoutX="935.0" layoutY="764.0" mnemonicParsing="false" onAction="#handleClicksKembali" prefHeight="43.0" prefWidth="97.0" style="-fx-background-radius: 15;" stylesheets="@design.css" />
+               </children>
+            </Pane>
+            <Pane fx:id="pnlUpdateRuangan" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="862.0" fitWidth="1190.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imgs/updateRuagan.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="txtnamaUpdate" layoutX="402.0" layoutY="287.0" prefHeight="36.0" prefWidth="330.0" promptText="Isi nama ruangan" style="-fx-background-color: #ffffff;" />
+                  <ComboBox fx:id="txttipeUpate" editable="true" layoutX="400.0" layoutY="362.0" prefHeight="36.0" prefWidth="330.0" promptText="Isi tipe ruangan" />
+                  <TextField fx:id="txtKapasitasUpdate" layoutX="402.0" layoutY="437.0" prefHeight="36.0" prefWidth="330.0" promptText="Isi kapasitas ruangan" style="-fx-background-color: #ffffff;" />
+                  <TextField fx:id="txtTarifUpdate" layoutX="402.0" layoutY="510.0" prefHeight="36.0" prefWidth="330.0" promptText="Isi tarif per-jam ruangan" style="-fx-background-color: #ffffff;" />
+                  <TextField fx:id="txtidRuanganUpdate" disable="true" editable="false" layoutX="919.0" layoutY="519.0" prefHeight="29.0" prefWidth="104.0" style="-fx-background-color: #ffffff;" />
+                  <Button fx:id="btnUpdate" blendMode="SCREEN" layoutX="1062.0" layoutY="765.0" mnemonicParsing="false" onAction="#onClickupdateRuangan" prefHeight="43.0" prefWidth="104.0" style="-fx-background-radius: 15;" stylesheets="@design.css" />
+                  <Button fx:id="btnKembaliUpdate" blendMode="SCREEN" layoutX="937.0" layoutY="767.0" mnemonicParsing="false" onAction="#handleClicksKembali" prefHeight="43.0" prefWidth="97.0" style="-fx-background-radius: 15;" stylesheets="@design.css" />
+               </children>
+            </Pane>
+            <Pane fx:id="pnlTambahMember" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="846.0" fitWidth="1190.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imgs/Tambahmember.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="txtTipeMember" layoutX="407.0" layoutY="294.0" prefHeight="36.0" prefWidth="330.0" promptText="Isi tipe member" style="-fx-background-color: #ffffff;" />
+                  <TextField fx:id="txtDiskonMember" layoutX="407.0" layoutY="367.0" prefHeight="36.0" prefWidth="330.0" promptText="Isi diskon member" style="-fx-background-color: #ffffff;" />
+                  <TextField fx:id="txtHargaMember" layoutX="407.0" layoutY="441.0" prefHeight="36.0" prefWidth="330.0" promptText="Isi harga member" style="-fx-background-color: #ffffff;" />
+                  <TextField fx:id="txtIdMember" layoutX="923.0" layoutY="448.0" prefHeight="14.0" prefWidth="97.0" style="-fx-background-color: #ffffff;" />
+                  <Button fx:id="btnTambahMember" blendMode="SCREEN" layoutX="1062.0" layoutY="765.0" mnemonicParsing="false" onAction="#onClicktambahMember" prefHeight="43.0" prefWidth="104.0" style="-fx-background-radius: 15;" stylesheets="@design.css" />
+                  <Button fx:id="btnKembaliMember" blendMode="SCREEN" layoutX="933.0" layoutY="767.0" mnemonicParsing="false" onAction="#handleClicksKembali" prefHeight="43.0" prefWidth="104.0" style="-fx-background-radius: 15;" stylesheets="@design.css" />
+               </children>
+            </Pane>
+            <Pane fx:id="pnlTambahMenu" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="847.0" fitWidth="1190.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imgs/TambahMenu.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="txtNamaMenu" layoutX="410.0" layoutY="288.0" prefHeight="36.0" prefWidth="330.0" promptText="Isi nama menu" style="-fx-background-color: #ffffff;" />
+                  <ComboBox fx:id="txtTipeMenu" layoutX="410.0" layoutY="362.0" prefHeight="36.0" prefWidth="330.0" promptText="Isi kategori menu" style="-fx-background-color: #ffffff;" />
+                  <TextField fx:id="txtHargaMenu" layoutX="410.0" layoutY="436.0" prefHeight="36.0" prefWidth="330.0" promptText="Isi harga menu" style="-fx-background-color: #ffffff;" />
+                  <TextField fx:id="txtIdMenu" layoutX="927.0" layoutY="463.0" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #ffffff;" />
+                  <Button fx:id="btnPilihTambahMenu" blendMode="SCREEN" layoutX="1062.0" layoutY="766.0" mnemonicParsing="false" onAction="#onClicktambahMenu" prefHeight="43.0" prefWidth="104.0" style="-fx-background-radius: 15;" stylesheets="@design.css" />
+                  <Button fx:id="btnKembaliMenu" blendMode="SCREEN" layoutX="935.0" layoutY="766.0" mnemonicParsing="false" onAction="#handleClicksKembali" prefHeight="43.0" prefWidth="104.0" style="-fx-background-radius: 15;" stylesheets="@design.css" />
+               </children>
+            </Pane>
+            <Pane fx:id="pnlHome" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="844.0" fitWidth="1193.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imgs/Dashboard%20Admin.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="dataRuangan" layoutX="386.0" layoutY="262.0" prefHeight="70.0" prefWidth="97.0" style="-fx-background-color: #F968A2;" text="10" textFill="WHITE">
+                     <font>
+                        <Font name="Impact" size="64.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="386.0" layoutY="483.0" prefHeight="70.0" prefWidth="97.0" style="-fx-background-color: #2CCD92;" text="10" textFill="WHITE">
+                     <font>
+                        <Font name="Impact" size="64.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="dataMenu" layoutX="843.0" layoutY="262.0" prefHeight="70.0" prefWidth="97.0" style="-fx-background-color: #CD3C2C;" text="10" textFill="WHITE">
+                     <font>
+                        <Font name="Impact" size="64.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </StackPane>
+      <VBox prefHeight="844.0" prefWidth="330.0">
+         <children>
+            <AnchorPane prefHeight="845.0" prefWidth="330.0">
+               <children>
+                  <Button fx:id="btnRuangan" layoutY="240.0" mnemonicParsing="false" onAction="#handleClicks" onMouseEntered="#ClickEventMouseEntered" prefHeight="98.0" prefWidth="330.0" stylesheets="@design.css" text="Ruangan">
+                     <font>
+                        <Font name="Britannic Bold" size="40.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnHome" layoutY="141.0" mnemonicParsing="false" onAction="#handleClicks" onMouseEntered="#ClickEventMouseEntered" prefHeight="98.0" prefWidth="330.0" stylesheets="@design.css" text="Home">
+                     <font>
+                        <Font name="Britannic Bold" size="40.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnKaryawan" layoutY="537.0" mnemonicParsing="false" onAction="#handleClicks" onMouseEntered="#ClickEventMouseEntered" prefHeight="98.0" prefWidth="330.0" stylesheets="@design.css" text="Karyawan">
+                     <font>
+                        <Font name="Britannic Bold" size="40.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnMember" layoutY="438.0" mnemonicParsing="false" onAction="#handleClicks" onMouseEntered="#ClickEventMouseEntered" prefHeight="98.0" prefWidth="330.0" stylesheets="@design.css" text="Member">
+                     <font>
+                        <Font name="Britannic Bold" size="40.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnMenu" layoutY="339.0" mnemonicParsing="false" onAction="#handleClicks" onMouseEntered="#ClickEventMouseEntered" prefHeight="98.0" prefWidth="330.0" stylesheets="@design.css" text="Menu">
+                     <font>
+                        <Font name="Britannic Bold" size="40.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="namaLbl" layoutX="133.0" layoutY="39.0" prefHeight="36.0" prefWidth="87.0" style="-fx-background-color: #413277;" text="Nama Karyawan" textFill="WHITE">
+                     <font>
+                        <Font name="Impact" size="25.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnExit" layoutY="739.0" mnemonicParsing="false" onAction="#OnClickExit" onMouseEntered="#ClickEventMouseEntered" prefHeight="98.0" prefWidth="330.0" stylesheets="@design.css" text="Exit">
+                     <font>
+                        <Font name="Britannic Bold" size="40.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
