@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.karaoke_poprock.DasLogin">
+   <children>
+      <ImageView fitHeight="1050.0" fitWidth="1680.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imgs/LoginKasir.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnLogin" blendMode="MULTIPLY" layoutX="846.0" layoutY="640.0" mnemonicParsing="false" onAction="#onBtnLogin" prefHeight="76.0" prefWidth="400.0" text="Masuk">
+         <font>
+            <Font name="Britannic Bold" size="40.0" />
+         </font>
+      </Button>
+      <TextField fx:id="txtUsername" blendMode="MULTIPLY" layoutX="858.0" layoutY="396.0" prefHeight="63.0" prefWidth="380.0" style="-fx-background-color: #ffffff;" />
+      <PasswordField fx:id="txtPassword" blendMode="MULTIPLY" layoutX="858.0" layoutY="525.0" onAction="#onBtnLogin" prefHeight="63.0" prefWidth="380.0" style="-fx-background-color: #ffffff;" />
+   </children>
+</AnchorPane>

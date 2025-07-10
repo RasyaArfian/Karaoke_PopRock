@@ -1,0 +1,24 @@
+.item_cell_container{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 15;
+    -fx-efect: dropshadow(three-pass-box, #DDDDDD, 4, 0, 0, 7);
+}
+
+.item_cell_container Hbox{
+    -fx-spacing: 20;
+    -fx-alignment: Center_left;
+}
+
+.item_cell_container Hbox Label{
+    -fx-text-fill: white;
+    -fx-font-family: "Britannic Bold";
+    -fx-font-size: 12;
+}
+
+.edit_btn{
+    -fx-background-color: white;
+}
+
+.delete_btn{
+    -fx-background-color: white;
+}
