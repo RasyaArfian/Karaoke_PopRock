@@ -2,12 +2,17 @@ package com.example.karaoke_poprock;
 
 import Master.Karyawan;
 import Master.Ruangan;
+import Master.Menu;
+import Master.keranjangMenu;
 import Master.swalAlert;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
@@ -29,6 +34,13 @@ public class DasTransaksi implements Initializable {
     String statusRuangan, namaTransaksiR, noHpTransaksiR, namaMember;
     double diskonRuangan, hargaRuangan,totalRuangan,totalPembayaran, totalkembalian, durasiPenyewaan;
     int idkaryawan, idruangan, idmember, idtransaksi;
+
+    // MENU MENU MENU
+    // MENU MENU MENU
+    String statusMenu, namaMenu, kategoriMenu;
+    double hargaMenu, totalKeranjangMenu , totalpembayaranMenu, totalkembalianMenu;
+    double tampungHarga;
+    int  quantity, idmenu;
 
     @FXML
     private Pane pnlHomeTransaksi;
@@ -81,6 +93,8 @@ public class DasTransaksi implements Initializable {
     private Button btnCreateMember;
     @FXML
     private Button btnUpMember;
+
+
     // TRANSAKSI RUANGAN
     // TRANSAKSI RUANGAN
     @FXML
@@ -123,12 +137,34 @@ public class DasTransaksi implements Initializable {
     // TRANSAKSI RUANGAN
     // TRANSAKSI RUANGAN
 
+
+    // TRANSAKSI MENU
+    // TRANSAKSI MENU
+
+    @FXML private TextField txtIdRuangan;
+    @FXML private DatePicker tglMenuTrs;
+    @FXML private TextField txtIdTrsMenu;
+    @FXML private ListView<Menu> dataMenu;
+    @FXML private ListView<keranjangMenu> dataKeranjangMenu;
+    @FXML private TextField txtPembayaranMenu;
+    @FXML private Label lblKembalian;
+    @FXML private Label totalMenu;
+
+    @FXML private Button btnBayarMenu;
+    @FXML private Button btnHitungMenu;
+    @FXML private Button btnBatalMenu;
+
+
+    // TRANSAKSI MENU
+    // TRANSAKSI MENU
+
     swalAlert alert = new swalAlert();
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tglTransaksiRuangan.setValue(LocalDate.from(LocalDateTime.now()));
+        tglMenuTrs.setValue(LocalDate.from(LocalDateTime.now()));
         loadDataFromDatabaseRuangan();
 
         if (cbJamSelesai != null && cbJamMulai != null) {
@@ -146,6 +182,41 @@ public class DasTransaksi implements Initializable {
             cbJamSelesai.valueProperty().addListener((
                     (observableValue, oldValue, newValue) -> hitungDurasiDanHarga()));
         }
+
+    }
+
+    @FXML
+    protected void ClickEventMouseEntered(){
+        btnHomeTransaksi.addEventHandler(MouseEvent.MOUSE_ENTERED, ev -> btnHomeTransaksi.setStyle("-fx-background-color: #FFFFFF; -fx-text-fill: #413277;"));
+        btnHomeTransaksi.addEventHandler(MouseEvent.MOUSE_EXITED, ev -> {
+            if (!btnHomeTransaksi.getStyle().contains("#FFFFFF; -fx-background-color: #FFFFFF;")) {
+                btnHomeTransaksi.setStyle("-fx-background-color: #413277; -fx-text-fill: #FFFFFF;");
+            }
+        });
+        btnMemberTransaksi.addEventHandler(MouseEvent.MOUSE_ENTERED, ev -> btnMemberTransaksi.setStyle("-fx-background-color: #FFFFFF; -fx-text-fill: #413277;"));
+        btnMemberTransaksi.addEventHandler(MouseEvent.MOUSE_EXITED, ev -> {
+            if (!btnMemberTransaksi.getStyle().contains("#FFFFFF; -fx-background-color: #FFFFFF;")) {
+                btnMemberTransaksi.setStyle("-fx-background-color: #413277; -fx-text-fill: #FFFFFF;");
+            }
+        });
+        btnTransaksi.addEventHandler(MouseEvent.MOUSE_ENTERED, ev -> btnTransaksi.setStyle("-fx-background-color: #FFFFFF; -fx-text-fill: #413277;"));
+        btnTransaksi.addEventHandler(MouseEvent.MOUSE_EXITED, ev -> {
+            if (!btnTransaksi.getStyle().contains("#FFFFFF; -fx-background-color: #FFFFFF;")) {
+                btnTransaksi.setStyle("-fx-background-color: #413277; -fx-text-fill: #FFFFFF;");
+            }
+        });
+        btnTrMenu.addEventHandler(MouseEvent.MOUSE_ENTERED, ev -> btnTrMenu.setStyle("-fx-background-color: #FFFFFF; -fx-text-fill: #413277;"));
+        btnTrMenu.addEventHandler(MouseEvent.MOUSE_EXITED, ev -> {
+            if (!btnTrMenu.getStyle().contains("#FFFFFF; -fx-background-color: #FFFFFF;")) {
+                btnTrMenu.setStyle("-fx-background-color: #413277; -fx-text-fill: #FFFFFF;");
+            }
+        });
+        btnTrRuangan.addEventHandler(MouseEvent.MOUSE_ENTERED, ev -> btnTrRuangan.setStyle("-fx-background-color: #FFFFFF; -fx-text-fill: #413277; "));
+        btnTrRuangan.addEventHandler(MouseEvent.MOUSE_EXITED, ev -> {
+            if (!btnTrRuangan.getStyle().contains("#FFFFFF; -fx-background-color: #FFFFFF;")) {
+                btnTrRuangan.setStyle("-fx-background-color: #413277; -fx-text-fill: #FFFFFF;");
+            }
+        });
 
     }
 
@@ -167,6 +238,26 @@ public class DasTransaksi implements Initializable {
         }
     }
 
+    public void generateIDTransaksiMenu() {
+        try {
+            String sql = "SELECT MAX(id_trsmenu) AS nextId FROM transaksi_penyewaanruangan";
+            connection.pstat = connection.conn.prepareStatement(sql);
+            connection.result = connection.pstat.executeQuery();
+            if (connection.result.next()) {
+                int nextId = connection.result.getInt("nextId");
+                txtIdTransaksiRuangan.setText(String.valueOf(nextId + 1));
+            } else {
+                txtIdTransaksiRuangan.setText("1");
+            }
+            connection.pstat.close();
+            connection.result.close();
+        } catch (SQLException ex) {
+            System.out.println("Terjadi error saat generate ID: " + ex);
+        }
+    }
+
+
+
         public double getDurasiFromFunction(DBconnect connection, LocalDateTime jmMulai, LocalDateTime jmSelesai){
             try{
                 String sql = "SELECT dbo.fn_hitungDurasiPenyewaan (?, ?) AS durasi";
@@ -181,8 +272,8 @@ public class DasTransaksi implements Initializable {
 
                 rs.close();
                 connection.pstat.close();
-                connection.conn.close();
             } catch (SQLException e) {
+
                 throw new RuntimeException(e);
             }
             return 0;
@@ -302,14 +393,173 @@ public class DasTransaksi implements Initializable {
        hargaRuangan = ruangan.getTarif_ruangan();
        statusRuangan = ruangan.getStatus();
        idruangan = ruangan.getId_ruangan();
-       dataRuangan.setVisible(false);
+       //dataRuangan.setVisible(false);
     }
 
+    @FXML
+    private void loadDataFromDatabaseMenu() {
+//        statusRuangan = "Aktif";
+
+        try {
+            List<Menu> viewMenu = new ArrayList<>();
+            String sql = "SELECT * FROM master_Menu";
+
+            connection.pstat = connection.conn.prepareStatement(sql);
+            connection.result = connection.pstat.executeQuery();
+
+            while (connection.result.next()) {
+                viewMenu.add(new Menu(
+                        connection.result.getInt("ID_Menu"),
+                        connection.result.getString("nama_menu"),
+                        connection.result.getString("kategori_menu"),
+                        connection.result.getInt("harga_MENU"),
+                        connection.result.getString("status")
+                ));
+
+                dataMenu.getItems().setAll(viewMenu);
+                // connection.result.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+    private void reloadDataMenu() {
+        dataMenu.setCellFactory(parameter -> new ListCell<Menu>() {
+            @Override
+            protected void updateItem(Menu mn, boolean empty) {
+                super.updateItem(mn, empty);
+
+                if (empty || mn == null) {
+                    setText(null);
+                    setGraphic(null);
+                }else{
+                    try{
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("itemMenu.fxml"));
+                        HBox itemBox = fxmlLoader.load();
+                        ItemMenu controller = fxmlLoader.getController();
+                        controller.setDataTransaksiMenu(mn, DasTransaksi.this);
+                        setGraphic(itemBox);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+        });
+    }
+
+
+
+    private ObservableList<keranjangMenu> keranjangItems = FXCollections.observableArrayList();
+
+    public void setQuantityMenu(keranjangMenu keranjangMenu) {
+        if (keranjangMenu.getQuantity() <= 1){
+            alert.showAlert(Alert.AlertType.CONFIRMATION,"INFORMATION", "Apakah anda yakin ingin menghapus menu ini?",false);
+            if(true) {
+                dataKeranjangMenu.getItems().remove(keranjangMenu);
+                reloadKeranjangMenu();
+                updateTotalHarga();
+            }else{
+                reloadKeranjangMenu();
+                updateTotalHarga();
+            }
+        }else {
+            keranjangMenu.setQuantity(keranjangMenu.getQuantity() - 1);
+            reloadKeranjangMenu();
+            updateTotalHarga();
+        }
+    }
+
+    public void cekMenu(Menu menu){
+
+        if(menu == null){
+            alert.showAlert(Alert.AlertType.INFORMATION,"EMPTY","Data kosong",false);
+            return;
+        }
+
+        hargaMenu = menu.getHargaMenu();
+        statusMenu = menu.getStatus();
+        kategoriMenu = menu.getKategoriMenu();
+        idmenu = menu.getIdMenu();
+        namaMenu = menu.getNamaMenu();
+
+        boolean itemExists = false;
+        for (keranjangMenu item : keranjangItems) {
+            if (item.getIdMenu() == idmenu) {
+                item.setQuantity(item.getQuantity() + 1); // Tambah quantity jika sudah ada
+                itemExists = true;
+                break;
+            }
+        }
+
+        if (!itemExists) {
+            // Tambahkan item baru jika belum ada
+            keranjangItems.add(new keranjangMenu(idmenu, namaMenu, kategoriMenu, hargaMenu, 1));
+        }
+        //totalMenu.setText(String.valueOf(tampungHarga));
+       // loadDataForDatabaseKeranjangMenu(hargaMenu, idmenu, namaMenu, kategoriMenu,quantity);
+        reloadKeranjangMenu();
+        updateTotalHarga();
+
+    }
+    private void updateTotalHarga() {
+        totalKeranjangMenu = 0;
+        for (keranjangMenu item : keranjangItems) {
+            totalKeranjangMenu += item.getHargaMenu() * item.getQuantity();
+            quantity += item.getQuantity();
+        }
+        totalMenu.setText("Rp. " + totalKeranjangMenu); // Langsung set label
+    }
+
+
+//    public void loadDataForDatabaseKeranjangMenu(double hargaMenu, int idmenu, String nmu, String kategorimenu,int quantity) {
+//        List<keranjangMenu> cek = new ArrayList<>();
+//
+//
+//
+//
+////        cek.add(new keranjangMenu(idmenu, nmu, kategorimenu, hargaMenu,quantity));
+////
+////        dataKeranjangMenu.getItems().setAll(cek);
+//    }
+
+    private void reloadKeranjangMenu() {
+        dataKeranjangMenu.setItems(keranjangItems);
+        dataKeranjangMenu.setCellFactory(parameter -> new ListCell<keranjangMenu>() {
+            @Override
+            protected void updateItem(keranjangMenu mn, boolean empty) {
+                super.updateItem(mn, empty);
+
+                if (empty || mn == null) {
+                    setText(null);
+                    setGraphic(null);
+                }else{
+                    try{
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("itemKeranjangMenu.fxml"));
+                        HBox itemBox = fxmlLoader.load();
+                        ItemKeranjangMenu controller = fxmlLoader.getController();
+                        controller.setDataTransaksiKeranjangMenu(mn, DasTransaksi.this);
+                        setGraphic(itemBox);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+        });
+    }
+
+
+
+
+//
 //    @FXML
 //    protected void onClickCariMember()  {
 //        try{
 //            connection.stat = connection.conn.createStatement();
 //            String sql = "SELECT ID_Member FROM master_Member";
+//
 //
 //
 //        } catch (SQLException e) {
@@ -340,11 +590,19 @@ public class DasTransaksi implements Initializable {
     protected void onClickHitung(){
         hitungDurasiDanHarga();
         if (txtPembayaran.getText().isEmpty()){
+            alert.showAlert(Alert.AlertType.WARNING,"ERROR","Data pembayaran tidak boleh kosong",false);
             return;
         }
         totalPembayaran = Double.parseDouble(txtPembayaran.getText());
+
         //totalRuangan = Double.parseDouble(lblTotalPenyewaan.getText());
-        totalkembalian = totalPembayaran - totalRuangan;
+        if (totalPembayaran < totalRuangan){
+            alert.showAlert(Alert.AlertType.INFORMATION,"ERROR","Jumlah pembayaran kurang dari total penyewaan ruangan",false);
+            return;
+        }else {
+            totalkembalian = totalPembayaran - totalRuangan;
+        }
+
         lblTotalKembali.setText(String.format("%.2f", totalkembalian));
     }
 
@@ -355,21 +613,33 @@ public class DasTransaksi implements Initializable {
     @FXML
     protected void onClickBayar(){
 
-        if(txtNamaTransaksi.getText().isEmpty() || txtNotelpTransaksi.getText().isEmpty() || idruangan == 0 || cbJamMulai.getValue() == null || cbJamSelesai.getValue() == null){}
+        if(txtNamaTransaksi.getText().isEmpty() || txtNotelpTransaksi.getText().isEmpty() || idruangan == 0 || cbJamMulai.getValue() == null || cbJamSelesai.getValue() == null){
+            alert.showAlert(Alert.AlertType.WARNING,"ERROR","Data harus diisi", false);
+            return;
+        }
 
         //txtIdTransaksiRuangan.setVisible(false);
         //idtransaksi = Integer.parseInt(txtIdTransaksiRuangan.getText());
         idkaryawan = tmpKary;
+
         int idmbr = txtIdMember.getText().isEmpty() ? 0 : Integer.parseInt(txtIdMember.getText());
+        if (idmbr == 0){
+            txtIdMember.setVisible(false);
+        }
+
+        double diskonruang = txtDiskonTR.getText().isEmpty() ? 0 : Double.parseDouble(txtDiskonTR.getText());
+        if (diskonRuangan == 0){
+            txtDiskonTR.setVisible(false);
+        }
+
         idmember = idmbr;
+        diskonRuangan = diskonruang;
+
         LocalDate tglTransaksi = tglTransaksiRuangan.getValue();
         LocalDateTime jamMulai = LocalDateTime.of(tglTransaksi, cbJamMulai.getValue());
         LocalDateTime jamSelesai = LocalDateTime.of(tglTransaksi, cbJamSelesai.getValue());
-//        LocalTime jamMulai = cbJamMulai.getValue();
-//        LocalTime jamSelesai = cbJamSelesai.getValue();
         namaMember = txtNamaTransaksi.getText();
         noHpTransaksiR = txtNotelpTransaksi.getText();
-        diskonRuangan = Double.parseDouble(txtDiskonTR.getText());
         statusRuangan = "Diproses";
 
         try{
@@ -448,10 +718,13 @@ public class DasTransaksi implements Initializable {
             pnlTransaksiRuangan.toFront();
             loadDataFromDatabaseRuangan();
             reloadDataRuangan();
-            lblDurasi.setText(String.valueOf(tglTransaksiRuangan));
             //generateIDTransaksiRuangan();
         }
         if (event.getSource() == btnTrMenu) {
+            pnlTransaksiMenu.setStyle("-fx-background-color : #ffffff");
+            pnlTransaksiMenu.toFront();
+            loadDataFromDatabaseMenu();
+            reloadDataMenu();
 
         }
         if (event.getSource() == btnTrMember) {

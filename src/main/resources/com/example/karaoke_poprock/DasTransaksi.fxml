@@ -28,17 +28,6 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane fx:id="pnlTransaksi" prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <ImageView fitHeight="842.0" fitWidth="1190.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@imgs/DashTransaksi.png" />
-                     </image></ImageView>
-                  <Button fx:id="btnTrRuangan" blendMode="LIGHTEN" layoutX="363.0" layoutY="228.0" mnemonicParsing="false" onAction="#handleTransaksiClicks" prefHeight="237.0" prefWidth="355.0" stylesheets="@design.css" />
-                  <Button fx:id="btnTrMenu" blendMode="LIGHTEN" layoutX="805.0" layoutY="228.0" mnemonicParsing="false" onAction="#handleTransaksiClicks" prefHeight="237.0" prefWidth="355.0" stylesheets="@design.css" />
-                  <Button fx:id="btnTrMember" blendMode="LIGHTEN" layoutX="586.0" layoutY="512.0" mnemonicParsing="false" onAction="#handleTransaksiClicks" prefHeight="237.0" prefWidth="355.0" stylesheets="@design.css" />
-               </children>
-            </Pane>
             <Pane fx:id="pnlTransaksiRuangan" prefHeight="200.0" prefWidth="200.0">
                <children>
                   <ImageView fitHeight="844.0" fitWidth="1190.0" pickOnBounds="true" preserveRatio="true">
@@ -46,12 +35,17 @@
                         <Image url="@imgs/TransPembayaranR.png" />
                      </image>
                   </ImageView>
+                  <Label fx:id="tglTrans" layoutX="870.0" layoutY="243.0" text="Tanggal Transaksi" textFill="WHITE">
+                     <font>
+                        <Font name="Impact" size="13.0" />
+                     </font>
+                  </Label>
                   <DatePicker fx:id="tglTransaksiRuangan" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="813.0" layoutY="241.0" pickOnBounds="false" scaleShape="false" style="-fx-background-color: #ffffff;" />
-                  <TextField fx:id="txtIdMember" layoutX="413.0" layoutY="228.0" prefHeight="50.0" prefWidth="221.0" style="-fx-background-color: #ffffff;" />
-                  <TextField fx:id="txtNamaTransaksi" layoutX="413.0" layoutY="366.0" prefHeight="50.0" prefWidth="303.0" style="-fx-background-color: #ffffff;" />
-                  <TextField fx:id="txtNotelpTransaksi" layoutX="413.0" layoutY="453.0" prefHeight="50.0" prefWidth="303.0" style="-fx-background-color: #ffffff;" />
-                  <TextField fx:id="txtDiskonTR" layoutX="795.0" layoutY="226.0" prefHeight="50.0" prefWidth="303.0" style="-fx-background-color: #ffffff;" />
-                  <TextField fx:id="txtPembayaran" layoutX="402.0" layoutY="765.0" prefHeight="24.0" prefWidth="137.0" style="-fx-background-color: #ffffff;" />
+                  <TextField fx:id="txtIdMember" layoutX="413.0" layoutY="228.0" prefHeight="50.0" prefWidth="221.0" promptText="Isi id member customer" style="-fx-background-color: #ffffff;" />
+                  <TextField fx:id="txtNamaTransaksi" layoutX="413.0" layoutY="366.0" prefHeight="50.0" prefWidth="303.0" promptText="Isi nama customer" style="-fx-background-color: #ffffff;" />
+                  <TextField fx:id="txtNotelpTransaksi" layoutX="413.0" layoutY="453.0" prefHeight="50.0" prefWidth="303.0" promptText="Isi NoTelepon customer" style="-fx-background-color: #ffffff;" />
+                  <TextField fx:id="txtDiskonTR" layoutX="795.0" layoutY="226.0" prefHeight="50.0" prefWidth="303.0" promptText="Isi diskon member" style="-fx-background-color: #ffffff;" />
+                  <TextField fx:id="txtPembayaran" layoutX="402.0" layoutY="765.0" prefHeight="24.0" prefWidth="137.0" promptText="Isi pembayaran" style="-fx-background-color: #ffffff;" />
                   <Pane layoutX="765.0" layoutY="347.0" prefHeight="341.0" prefWidth="362.0" style="-fx-background-radius: 15;">
                      <children>
                         <ScrollPane prefHeight="341.0" prefWidth="362.0" style="-fx-background-radius: 15;">
@@ -72,16 +66,84 @@
                      </font>
                   </Label>
                   <Button fx:id="btnbyrRuangan" blendMode="LIGHTEN" layoutX="990.0" layoutY="795.0" mnemonicParsing="false" onAction="#onClickBayar" prefHeight="31.0" prefWidth="143.0" stylesheets="@design.css" />
-                  <ComboBox fx:id="cbJamMulai" layoutX="409.0" layoutY="547.0" prefHeight="43.0" prefWidth="150.0" />
-                  <ComboBox fx:id="cbJamSelesai" layoutX="579.0" layoutY="547.0" prefHeight="43.0" prefWidth="150.0" />
+                  <ComboBox fx:id="cbJamMulai" layoutX="409.0" layoutY="547.0" prefHeight="43.0" prefWidth="150.0" promptText="Isi jam mulai" />
+                  <ComboBox fx:id="cbJamSelesai" layoutX="579.0" layoutY="547.0" prefHeight="43.0" prefWidth="150.0" promptText="Isi jam selesai" />
                   <Label fx:id="lblDurasi" layoutX="593.0" layoutY="631.0" prefHeight="17.0" prefWidth="150.0" textFill="WHITE" />
                   <Button fx:id="btnHitungRuangan" blendMode="LIGHTEN" layoutX="990.0" layoutY="735.0" mnemonicParsing="false" onAction="#onClickHitung" prefHeight="31.0" prefWidth="143.0" stylesheets="@design.css" />
                   <Button fx:id="btnBatalRuangan" blendMode="LIGHTEN" layoutX="798.0" layoutY="733.0" mnemonicParsing="false" onAction="#onClickBatal" prefHeight="31.0" prefWidth="143.0" stylesheets="@design.css" />
-                  <Label fx:id="tglTrans" layoutX="729.0" layoutY="99.0" text="Tanggal Transaksi" textFill="WHITE">
+               </children>
+            </Pane>
+            <Pane fx:id="pnlTransaksiMenu" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="842.0" fitWidth="1190.0" layoutX="3.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imgs/TransaksiPembayaranMenu.png" />
+                     </image>
+                  </ImageView>
+                  <DatePicker fx:id="tglMenuTrs" layoutX="415.0" layoutY="230.0" prefHeight="43.0" prefWidth="312.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;" stylesheets="@design.css" />
+                  <TextField fx:id="txtIdTrsMenu" layoutX="415.0" layoutY="329.0" prefHeight="50.0" prefWidth="303.0" style="-fx-background-color: #ffffff;" />
+                  <TextField fx:id="txtIdRuangan" layoutX="415.0" layoutY="443.0" prefHeight="50.0" prefWidth="221.0" style="-fx-background-color: #ffffff;" />
+                  <Pane layoutX="784.0" layoutY="221.0" prefHeight="276.0" prefWidth="337.0">
+                     <children>
+                        <ListView fx:id="dataMenu" prefHeight="276.0" prefWidth="338.0" />
+                     </children>
+                  </Pane>
+                  <TextField fx:id="txtPembayaranMenu" layoutX="750.0" layoutY="562.0" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #ffffff;" />
+                  <Pane layoutX="381.0" layoutY="562.0" prefHeight="151.0" prefWidth="312.0" style="-fx-background-color: #413277;">
+                     <children>
+                        <ListView fx:id="dataKeranjangMenu" prefHeight="149.0" prefWidth="312.0" style="-fx-background-color: #413277;" stylesheets="@design.css" />
+                     </children>
+                  </Pane>
+                  <Label fx:id="totalMenu" layoutX="478.0" layoutY="719.0" text="harga" textFill="WHITE">
                      <font>
-                        <Font name="Impact" size="13.0" />
+                        <Font name="Impact" size="14.0" />
                      </font>
                   </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="pnlTransaksi" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="842.0" fitWidth="1190.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imgs/DashboardTransaksiKosong.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="btnTrRuangan" blendMode="LIGHTEN" contentDisplay="BOTTOM" graphicTextGap="25.0" layoutX="363.0" layoutY="228.0" mnemonicParsing="false" onAction="#handleTransaksiClicks" onMouseEntered="#ClickEventMouseEntered" prefHeight="237.0" prefWidth="355.0" stylesheets="@design.css" text="Pembayaran Ruangan" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="107.0" fitWidth="177.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imgs/trsruangan.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Impact" size="26.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnTrMenu" blendMode="LIGHTEN" contentDisplay="BOTTOM" graphicTextGap="25.0" layoutX="805.0" layoutY="228.0" mnemonicParsing="false" onAction="#handleTransaksiClicks" onMouseEntered="#ClickEventMouseEntered" prefHeight="237.0" prefWidth="355.0" stylesheets="@design.css" text="Pembayaran Menu" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="115.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imgs/trsmenu.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Impact" size="26.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnTrMember" blendMode="LIGHTEN" contentDisplay="BOTTOM" graphicTextGap="25.0" layoutX="586.0" layoutY="512.0" mnemonicParsing="false" onAction="#handleTransaksiClicks" onMouseEntered="#ClickEventMouseEntered" prefHeight="237.0" prefWidth="355.0" stylesheets="@design.css" text="Pembayaran Member">
+                     <graphic>
+                        <ImageView fitHeight="108.0" fitWidth="118.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imgs/trsmember.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Impact" size="26.0" />
+                     </font>
+                  </Button>
                </children>
             </Pane>
          </children>

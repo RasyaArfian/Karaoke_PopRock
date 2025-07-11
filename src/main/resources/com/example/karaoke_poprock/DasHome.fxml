@@ -33,58 +33,6 @@
                   <Button fx:id="btnkembaliUpdateMenu" blendMode="SCREEN" layoutX="932.0" layoutY="766.0" mnemonicParsing="false" onAction="#handleClicksKembali" prefHeight="43.0" prefWidth="104.0" style="-fx-background-radius: 15;" stylesheets="@design.css" />
                </children>
             </Pane>
-            <Pane fx:id="pnlRuangan" prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <ImageView fitHeight="844.0" fitWidth="1193.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@imgs/Ruangan%20Admin.png" />
-                     </image>
-                  </ImageView>
-                  <TextField fx:id="txtsearchRuangan" blendMode="MULTIPLY" layoutX="558.0" layoutY="192.0" onAction="#searchRuangan" prefHeight="36.0" prefWidth="302.0" />
-                  <Button fx:id="createRuangan" layoutX="365.0" layoutY="192.0" mnemonicParsing="false" onAction="#onClickBtnTambah" prefHeight="36.0" prefWidth="152.0" stylesheets="@design.css" text="TAMBAH" textFill="WHITE">
-                     <font>
-                        <Font name="Britannic Bold" size="20.0" />
-                     </font>
-                  </Button>
-                  <Pane layoutX="342.0" layoutY="240.0" prefHeight="583.0" prefWidth="834.0">
-                     <children>
-                        <ListView fx:id="viewRuangan" layoutX="11.0" layoutY="59.0" prefHeight="490.0" prefWidth="819.0" />
-                     </children>
-                  </Pane>
-               </children>
-            </Pane>
-            <Pane fx:id="pnlMember" prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <ImageView fitHeight="847.0" fitWidth="1190.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@imgs/MemberAdmin.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="createMember" blendMode="SCREEN" layoutX="365.0" layoutY="198.0" mnemonicParsing="false" onAction="#onClickBtnTambah" prefHeight="36.0" prefWidth="152.0" style="-fx-background-radius: 15;" stylesheets="@design.css" />
-                  <Pane layoutX="355.0" layoutY="257.0" prefHeight="542.0" prefWidth="819.0">
-                     <children>
-                        <ListView fx:id="viewMember" layoutY="44.0" prefHeight="498.0" prefWidth="819.0" style="-fx-background-color: #ffffff;" />
-                     </children>
-                  </Pane>
-                  <TextField layoutX="569.0" layoutY="191.0" prefHeight="43.0" prefWidth="293.0" style="-fx-background-color: #ffffff;" />
-               </children>
-            </Pane>
-            <Pane fx:id="pnlMenu" prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <ImageView fitHeight="847.0" fitWidth="1299.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@imgs/MenuAdmin.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="createMenu" blendMode="SCREEN" layoutX="363.0" layoutY="194.0" mnemonicParsing="false" onAction="#onClickBtnTambah" prefHeight="36.0" prefWidth="158.0" style="-fx-background-radius: 15;" stylesheets="@design.css" />
-                  <Pane layoutX="356.0" layoutY="256.0" prefHeight="542.0" prefWidth="819.0">
-                     <children>
-                        <ListView fx:id="viewMenu" layoutX="-1.0" layoutY="44.0" prefHeight="498.0" prefWidth="819.0" style="-fx-background-color: #ffffff;" />
-                     </children>
-                  </Pane>
-                  <TextField fx:id="txtsearchMenu" layoutX="560.0" layoutY="194.0" onAction="#searchMenu" prefHeight="36.0" prefWidth="302.0" />
-               </children>
-            </Pane>
             <Pane fx:id="pnlKaryawan" prefHeight="200.0" prefWidth="1151.0">
                <children>
                   <ImageView fitHeight="847.0" fitWidth="1190.0" pickOnBounds="true" preserveRatio="true">
@@ -259,6 +207,123 @@
                         <Font name="Impact" size="64.0" />
                      </font>
                   </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="pnlRuangan" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="844.0" fitWidth="1193.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imgs/Ruangan%20Admin.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="txtsearchRuangan" blendMode="MULTIPLY" layoutX="558.0" layoutY="192.0" onAction="#searchRuangan" prefHeight="36.0" prefWidth="302.0" />
+                  <Button fx:id="createRuangan" layoutX="365.0" layoutY="192.0" mnemonicParsing="false" onAction="#onClickBtnTambah" prefHeight="36.0" prefWidth="152.0" stylesheets="@design.css" text="TAMBAH" textFill="WHITE">
+                     <font>
+                        <Font name="Britannic Bold" size="20.0" />
+                     </font>
+                  </Button>
+                  <Pane layoutX="342.0" layoutY="240.0" prefHeight="583.0" prefWidth="834.0">
+                     <children>
+                        <ListView fx:id="viewRuangan" layoutX="11.0" layoutY="59.0" prefHeight="490.0" prefWidth="819.0" />
+                        <Label layoutX="132.0" layoutY="27.0" text="ID" textFill="WHITE">
+                           <font>
+                              <Font name="Impact" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="191.0" layoutY="27.0" text="Nama Ruangan" textFill="WHITE">
+                           <font>
+                              <Font name="Impact" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="360.0" layoutY="27.0" text="Tipe" textFill="WHITE">
+                           <font>
+                              <Font name="Impact" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="448.0" layoutY="27.0" text="Kapasitas" textFill="WHITE">
+                           <font>
+                              <Font name="Impact" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="560.0" layoutY="27.0" text="Harga" textFill="WHITE">
+                           <font>
+                              <Font name="Impact" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="pnlMember" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="847.0" fitWidth="1190.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imgs/MemberAdmin.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="createMember" blendMode="SCREEN" layoutX="365.0" layoutY="198.0" mnemonicParsing="false" onAction="#onClickBtnTambah" prefHeight="36.0" prefWidth="152.0" style="-fx-background-radius: 15;" stylesheets="@design.css" />
+                  <Pane layoutX="355.0" layoutY="257.0" prefHeight="542.0" prefWidth="819.0">
+                     <children>
+                        <ListView fx:id="viewMember" layoutY="44.0" prefHeight="498.0" prefWidth="819.0" style="-fx-background-color: #ffffff;" />
+                        <Label layoutX="123.0" layoutY="15.0" text="ID" textFill="WHITE">
+                           <font>
+                              <Font name="Impact" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="178.0" layoutY="15.0" text="Nama Member" textFill="WHITE">
+                           <font>
+                              <Font name="Impact" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="308.0" layoutY="15.0" text="Diskon" textFill="WHITE">
+                           <font>
+                              <Font name="Impact" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="444.0" layoutY="15.0" text="Harga" textFill="WHITE">
+                           <font>
+                              <Font name="Impact" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <TextField layoutX="569.0" layoutY="191.0" prefHeight="43.0" prefWidth="293.0" style="-fx-background-color: #ffffff;" />
+               </children>
+            </Pane>
+            <Pane fx:id="pnlMenu" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="847.0" fitWidth="1299.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imgs/MenuAdmin.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="createMenu" blendMode="SCREEN" layoutX="363.0" layoutY="194.0" mnemonicParsing="false" onAction="#onClickBtnTambah" prefHeight="36.0" prefWidth="158.0" style="-fx-background-radius: 15;" stylesheets="@design.css" />
+                  <Pane layoutX="356.0" layoutY="256.0" prefHeight="542.0" prefWidth="819.0">
+                     <children>
+                        <ListView fx:id="viewMenu" layoutX="-1.0" layoutY="44.0" prefHeight="498.0" prefWidth="819.0" style="-fx-background-color: #ffffff;" />
+                        <Label layoutX="122.0" layoutY="14.0" text="ID" textFill="WHITE">
+                           <font>
+                              <Font name="Impact" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="193.0" layoutY="14.0" text="Nama Menu" textFill="WHITE">
+                           <font>
+                              <Font name="Impact" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="296.0" layoutY="14.0" text="Kategori" textFill="WHITE">
+                           <font>
+                              <Font name="Impact" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="433.0" layoutY="14.0" text="Harga" textFill="WHITE">
+                           <font>
+                              <Font name="Impact" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <TextField fx:id="txtsearchMenu" layoutX="560.0" layoutY="194.0" onAction="#searchMenu" prefHeight="36.0" prefWidth="302.0" />
                </children>
             </Pane>
          </children>

@@ -81,8 +81,8 @@ public class Item implements Initializable {
 
         id_lbl.setText(String.valueOf(member.getIdMember()));
         nama_lbl.setText(member.getTipeMember());
-        tipe_lbl.setText(String.valueOf(member.getDiskonMember()));
-        kapasitas_lbl.setText(String.valueOf(member.getHargaMember()));
+        tipe_lbl.setText(String.valueOf(member.getDiskonMember()+" %"));
+        kapasitas_lbl.setText(String.valueOf("Rp. "+member.getHargaMember()));
         tarif_lbl.setText("");
 
          btnEdit.setOnAction(event -> handleUpdateMember());
@@ -96,7 +96,7 @@ public class Item implements Initializable {
         id_lbl.setText(String.valueOf(menu.getIdMenu()));
         nama_lbl.setText(menu.getNamaMenu());
         tipe_lbl.setText(menu.getKategoriMenu());
-        kapasitas_lbl.setText(String.valueOf(menu.getHargaMenu())  );
+        kapasitas_lbl.setText(String.valueOf("Rp. "+menu.getHargaMenu())  );
         tarif_lbl.setText("");
 
         btnEdit.setOnAction(event -> handleUpdateMenu());

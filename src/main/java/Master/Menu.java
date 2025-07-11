@@ -5,6 +5,7 @@ public class Menu {
     private String namaMenu;
     private String kategoriMenu;
     private int hargaMenu;
+    private String status;
 
     public Menu(){
 
@@ -17,6 +18,16 @@ public class Menu {
         this.kategoriMenu = kategoriMenu;
         this.hargaMenu = hargaMenu;
     }
+
+    public Menu(int idMenu, String namaMenu, String kategoriMenu, int hargaMenu, String status) {
+        this.idMenu = idMenu;
+        this.namaMenu = namaMenu;
+        this.kategoriMenu = kategoriMenu;
+        this.hargaMenu = hargaMenu;
+        this.status = status;
+    }
+
+
 
     public int getIdMenu() {
         return idMenu;
@@ -49,4 +60,12 @@ public class Menu {
     public void setHargaMenu(int hargaMenu) {
         this.hargaMenu = hargaMenu;
     }
+
+    public String getStatus() {
+        return status;
+    }
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
 }

@@ -16,6 +16,7 @@ import javax.swing.*;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 
 
 public class DasLogin {
@@ -43,11 +44,11 @@ public class DasLogin {
         user = txtUsername.getText();
         pass = txtPassword.getText();
 
-        // Validation checks
-        if (user.isEmpty() || pass.isEmpty()) {
-           alert.showAlert(Alert.AlertType.WARNING, "ERROR","Username dan Password tidak boleh kosong", false);
-            return;
-        }
+//        // Validation checks
+//        if (user.isEmpty() || pass.isEmpty()) {
+//           alert.showAlert(Alert.AlertType.WARNING, "ERROR","Username dan Password tidak boleh kosong", false);
+//            return;
+//        }
 
         try {
             String sql = "EXEC sp_loginKaryawan @username = ?, @password = ?";
@@ -58,29 +59,38 @@ public class DasLogin {
             ResultSet rs = connection.pstat.executeQuery();
 
             if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "Welcome " + rs.getString("username"));
-                idkaryawan = rs.getInt("id_karyawan");
-                user = rs.getString("username");
-                role  = rs.getString("role");
-                pindahHome(idkaryawan,user, role);
-
-            } else if (txtUsername.getText() != user) {
-              alert.showAlert(Alert.AlertType.INFORMATION, "ERROR", "Username ", false);
+                alert.showAlert(Alert.AlertType.INFORMATION, "SUCCESS", "Login Success, welcome "+rs.getString("username"),false);
+                     idkaryawan = rs.getInt("id_karyawan");
+                     user = rs.getString("username");
+                     role = rs.getString("role");
+                     pindahHome(idkaryawan, user, role);
+                     //connection.pstat.close();
 
             }
-
 
             connection.pstat.close();
         } catch (SQLException e) {
-            System.out.println("Error: " + e);
-            JOptionPane.showMessageDialog(null, "System Error");
-        } finally {
-            try {
-                if (connection.conn != null) connection.conn.close();
-            } catch (SQLException e) {
-                System.out.println("Error closing connection: " + e);
+//            System.out.println("Error: " + e);
+            //alert.showAlert(Alert.AlertType.ERROR, "ERROR",  "Data " + e, false);
+            String errorMessage = e.getMessage();
+
+            if (errorMessage.contains("Username tidak ditemukan")) {
+                alert.showAlert(Alert.AlertType.ERROR, "LOGIN FAILED", "Username tidak ditemukan", false);
+            } else if (errorMessage.contains("Password salah")) {
+                alert.showAlert(Alert.AlertType.ERROR, "LOGIN FAILED", "Password salah", false);
+            } else if (errorMessage.contains("Akun tidak aktif")) {
+                alert.showAlert(Alert.AlertType.ERROR, "LOGIN FAILED", "Akun Anda tidak aktif", false);
+            } else if (errorMessage.contains("Username tidak boleh kosong") ||
+                    errorMessage.contains("Password tidak boleh kosong") ||
+                    errorMessage.contains("Tidak boleh ada field yang kosong")) {
+                alert.showAlert(Alert.AlertType.WARNING, "ERROR", errorMessage, false);
+            } else {
+                System.out.println("Error: " + e);
+                alert.showAlert(Alert.AlertType.ERROR, "ERROR", "Terjadi kesalahan saat login: " + e.getMessage(), false);
             }
+
         }
+
 
     }
 

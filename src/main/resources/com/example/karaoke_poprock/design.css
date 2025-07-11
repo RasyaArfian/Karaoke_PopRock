@@ -4,6 +4,10 @@
     -fx-text-fill : #ffffff;
 }
 
+.list-cell:filled {
+    -fx-background-color: #413277; /* Warna biru untuk item terisi */
+}
+
 
 .scroll-pane-color {
     -fx-background-color: #413277;
@@ -29,5 +33,19 @@
 .scroll-bar:vertical .thumb {
     -fx-background-color: #413277;
     -fx-background-radius: 5em;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.date-picker .arrow-button .arrow {
+    -fx-background-color: transparent;
+}
+
+.date-picker-popup {
+    -fx-opacity: 0;
 }
 
