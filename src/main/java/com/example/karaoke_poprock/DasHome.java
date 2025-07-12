@@ -846,7 +846,7 @@ public class DasHome implements Initializable {
         // Validasi field kosong
         if(txtNamaR.getText().isEmpty() || txtKapasitas.getText().isEmpty() ||
                 txtTarifR.getText().isEmpty() || txtTipeR.getValue() == null) {
-            alert.showAlert(Alert.AlertType.WARNING, "ERROR","Data tidak lengkap", false);
+            alert.showAlert(Alert.AlertType.WARNING, "ERROR","Seluruh data wajib diisi", false);
             return;
         }
         idRuangan = Integer.parseInt(txtIdR.getText());
@@ -866,7 +866,7 @@ public class DasHome implements Initializable {
             tarifR = Integer.parseInt(txtTarifR.getText());
             if(tarifR <= 0) {
                 //showAlert("Error", "Tarif harus lebih besar dari 0");
-                alert.showAlert(Alert.AlertType.WARNING, "ERROR","Tarif tidak boleh kurang dari 0", false);
+                alert.showAlert(Alert.AlertType.WARNING, "ERROR","Tarif tidak boleh kurang dari 0 atau 0 saja", false);
                 txtTarifR.clear();
                 return;
             }
@@ -912,7 +912,7 @@ public class DasHome implements Initializable {
     protected void onClickupdateRuangan() {
         //validasi field kosong
         if (txtidRuanganUpdate.getText().isEmpty() || txtnamaUpdate.getText().isEmpty() || txttipeUpate.getValue() == null || txtKapasitasUpdate.getText().isEmpty() || txtTarifUpdate.getText().isEmpty()) {
-            alert.showAlert(Alert.AlertType.WARNING, "ERROR", "Data tidak lengkap", false);
+            alert.showAlert(Alert.AlertType.WARNING, "ERROR", "Seluruh data wajib diisi", false);
             return;
         }
 
@@ -1432,7 +1432,16 @@ public class DasHome implements Initializable {
         }
         tipeMenu = cek;
 
-        hargaMenu = Integer.parseInt(txtUpdateHargaMenu.getText());
+        try {
+            hargaMenu = Integer.parseInt(txtUpdateHargaMenu.getText());
+            if(hargaMenu <= 0) {
+                alert.showAlert(Alert.AlertType.WARNING,"ERROR","Data harus lebih besar dari 0",false);
+                return;
+            }
+        } catch (NumberFormatException e) {
+            alert.showAlert(Alert.AlertType.WARNING,"ERROR","Data harus berupa angka",false);
+            return;
+        }
 
 
         try {
@@ -1446,7 +1455,7 @@ public class DasHome implements Initializable {
   
             connection.pstat.executeUpdate();
             connection.pstat.close();
-            alert.showAlert(Alert.AlertType.INFORMATION,"SUCCES", "Dara berhasil diupdate",false);
+            alert.showAlert(Alert.AlertType.INFORMATION,"SUCCES", "Data berhasil diupdate",false);
         } catch (SQLException e) {
             showAlert(String.valueOf(Alert.AlertType.ERROR), "Database Error gagal mengupdate data");
         }finally {

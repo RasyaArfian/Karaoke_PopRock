@@ -153,6 +153,7 @@ public class DasTransaksi implements Initializable {
     @FXML private Button btnBayarMenu;
     @FXML private Button btnHitungMenu;
     @FXML private Button btnBatalMenu;
+    @FXML private Button btnCariRuanganMenu;
 
 
     // TRANSAKSI MENU
@@ -257,6 +258,28 @@ public class DasTransaksi implements Initializable {
     }
 
 
+    @FXML
+    protected void btnsearchRuanganTransaksi(){
+        try{
+            List<Ruangan> vr = new ArrayList<>();
+            connection.stat = connection.conn.createStatement();
+            String query = "SELECT id_trsruangan,nama_customer FROM transaksi_penyewaanruangan WHERE id_trsruangan = "+ txtIdRuangan.getText();
+            connection.result = connection.stat.executeQuery(query);
+
+            if(connection.result.next()){
+                int idruangan = connection.result.getInt("id_trsruangan");
+                String namaCustomer = connection.result.getString("nama_customer");
+                alert.showAlert(Alert.AlertType.INFORMATION,"INFORMATION","Data pada id ruangan "+idruangan +" dengan customer "+ namaCustomer+" ditemukan",false);
+            }else{
+                alert.showAlert(Alert.AlertType.INFORMATION,"INFORMATION","Data tersebut tidak ada",false);
+                txtIdRuangan.setText("");
+            }
+
+        }catch (SQLException e){
+            alert.showAlert(Alert.AlertType.INFORMATION,"ERROR","Data tidak ada",false);
+        }
+    }
+
 
         public double getDurasiFromFunction(DBconnect connection, LocalDateTime jmMulai, LocalDateTime jmSelesai){
             try{
@@ -297,7 +320,14 @@ public class DasTransaksi implements Initializable {
                LocalDateTime selesai = LocalDateTime.of(tanggal, jamSelesai);
 
                double durasi = getDurasiFromFunction(connection, mulai, selesai);
-               lblDurasi.setText(String.format("%.2f jam", durasi));
+               if (durasi <= 0) {
+                   alert.showAlert(Alert.AlertType.WARNING,"WARNING","Jam selesai tidak boleh kurang dari jam mulai",false);
+                   cbJamMulai.setValue(null);
+                   cbJamSelesai.setValue(null);
+                   return;
+               }else{
+                   lblDurasi.setText(String.format("%.2f jam", durasi));
+               }
 
 
 //                // Hitung durasi dalam jam
@@ -322,6 +352,11 @@ public class DasTransaksi implements Initializable {
                totalRuangan = totalHarga;
                durasiPenyewaan = durasi;
 
+           }else if (jamMulai == null || jamSelesai == null) {
+               alert.showAlert(Alert.AlertType.WARNING, "WARNING","jam mulai dan selesai tidak boleh kosong",false);
+
+           } else if (jamMulai == jamSelesai){
+               alert.showAlert(Alert.AlertType.WARNING,"WARNING","jam mulai dengan jam selesai tidak bisa smaa",false);
            }
         } catch (NumberFormatException e) {
             lblDurasi.setText("Input tidak valid");
@@ -393,7 +428,7 @@ public class DasTransaksi implements Initializable {
        hargaRuangan = ruangan.getTarif_ruangan();
        statusRuangan = ruangan.getStatus();
        idruangan = ruangan.getId_ruangan();
-       //dataRuangan.setVisible(false);
+       dataRuangan.setVisible(false);
     }
 
     @FXML
@@ -509,6 +544,12 @@ public class DasTransaksi implements Initializable {
         for (keranjangMenu item : keranjangItems) {
             totalKeranjangMenu += item.getHargaMenu() * item.getQuantity();
             quantity += item.getQuantity();
+            if(item.getQuantity() > 10){
+                alert.showAlert(Alert.AlertType.WARNING,"WARNING","Pesanan tidak boleh lebih dari 10",false);
+                item.setQuantity(item.getQuantity() - 1);
+                reloadKeranjangMenu();
+                updateTotalHarga();
+            }
         }
         totalMenu.setText("Rp. " + totalKeranjangMenu); // Langsung set label
     }
