@@ -153,6 +153,47 @@
                   </Button>
                </children>
             </Pane>
+            <Pane fx:id="pnlTransaksiMember" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="844.0" fitWidth="1190.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imgs/TransPembayaranMember.png" />
+                     </image>
+                  </ImageView>
+                  <ComboBox id="cbTipeMember" fx:id="cbTipeMember" layoutX="765.0" layoutY="330.0" prefHeight="59.0" prefWidth="330.0" promptText="Pilih Tipe Member" style="-fx-background-radius: 15; -fx-background-color: white;">
+                  </ComboBox>
+                  <TextField fx:id="tfIdTransaksiMember" disable="true" editable="false" layoutX="386.0" layoutY="188.0" prefHeight="59.0" prefWidth="330.0" style="-fx-border-radius: 15; -fx-background-radius: 15;" />
+                  <TextField fx:id="tfNamaMember" editable="true" layoutX="371.0" layoutY="330.0" prefHeight="59.0" prefWidth="330.0" style="-fx-background-radius: 16;" />
+                  <TextField fx:id="tfTanggalPembuatan" disable="true" editable="false" layoutX="809.0" layoutY="188.0" prefHeight="59.0" prefWidth="330.0" style="-fx-border-radius: 15; -fx-background-radius: 15;" />
+                  <!--                  <TextField fx:id="tfNoTelp" editable="true" layoutX="371.0" layoutY="422.0" prefHeight="59.0" prefWidth="330.0" style="-fx-background-radius: 16; -fx-opacity: 0;" />-->
+                  <TextField fx:id="tfNoTelpMember" editable="true" layoutX="371.0" layoutY="422.0" prefHeight="59.0" prefWidth="330.0" style="-fx-background-radius: 16;" />
+                  <TextField fx:id="tfDiskonTransaksiMember" editable="false" layoutX="765.0" layoutY="422.0" prefHeight="59.0" prefWidth="330.0" style="-fx-border-radius: 15; -fx-background-radius: 15;" />
+                  <TextField fx:id="tfTotalPembayaran" editable="true" layoutX="372.0" layoutY="606.0" prefHeight="43.0" prefWidth="274.0" style="-fx-border-radius: 20; -fx-background-radius: 20;" />
+                  <Button fx:id="btnBatalMember" blendMode="LIGHTEN" layoutX="831.0" layoutY="758.0" mnemonicParsing="false" onAction="#onClickBatal" prefHeight="31.0" prefWidth="157.0" stylesheets="@design.css" />
+                  <Button fx:id="btnbyrMember" blendMode="LIGHTEN" layoutX="1010.0" layoutY="758.0" mnemonicParsing="false" onAction="#onClickBayarMember" prefHeight="31.0" prefWidth="157.0" stylesheets="@design.css" />
+                  <Label fx:id="lblHargaMember" layoutX="557.0" layoutY="540.0" prefHeight="22.0" prefWidth="35.0" text="Rp." textFill="WHITE">
+                     <font>
+                        <Font name="Impact" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblTarif" layoutX="592.0" layoutY="540.0" prefHeight="22.0" prefWidth="107.0" textFill="WHITE">
+                     <font>
+                        <Font name="Impact" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblHargaMember1" layoutX="557.0" layoutY="693.0" prefHeight="22.0" prefWidth="35.0" text="Rp." textFill="WHITE">
+                     <font>
+                        <Font name="Impact" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblKembalianMember" layoutX="592.0" layoutY="693.0" prefHeight="22.0" prefWidth="107.0" textFill="WHITE">
+                     <font>
+                        <Font name="Impact" size="18.0" />
+                     </font>
+                  </Label>
+
+               </children>
+            </Pane>
          </children>
       </StackPane>
       <VBox prefHeight="844.0" prefWidth="330.0">

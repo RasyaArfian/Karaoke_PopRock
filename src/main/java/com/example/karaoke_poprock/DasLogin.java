@@ -44,11 +44,11 @@ public class DasLogin {
         user = txtUsername.getText();
         pass = txtPassword.getText();
 
-//        // Validation checks
-//        if (user.isEmpty() || pass.isEmpty()) {
-//           alert.showAlert(Alert.AlertType.WARNING, "ERROR","Username dan Password tidak boleh kosong", false);
-//            return;
-//        }
+        // Validation checks
+        if (user.isEmpty() || pass.isEmpty()) {
+           alert.showAlert(Alert.AlertType.WARNING, "ERROR","Username dan Password tidak boleh kosong", false);
+            return;
+        }
 
         try {
             String sql = "EXEC sp_loginKaryawan @username = ?, @password = ?";

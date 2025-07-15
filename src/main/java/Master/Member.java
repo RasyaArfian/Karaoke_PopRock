@@ -3,18 +3,24 @@ package Master;
 public class Member {
     private int idMember;
     private String tipeMember;
-    private int diskonMember;
-    private int hargaMember;
+    private double diskonMember;
+    private double hargaMember;
 
     private Member(){
 
     }
 
-    public Member(int idMember, String tipeMember, int diskonMember, int hargaMember) {
+    public Member(int idMember, String tipeMember, double diskonMember, double hargaMember) {
         this.idMember = idMember;
         this.tipeMember = tipeMember;
         this.diskonMember = diskonMember;
         this.hargaMember = hargaMember;
+    }
+
+    public Member(int id, double diskon, double harga) {
+        this.idMember = id;
+        this.diskonMember = diskon;
+        this.hargaMember = harga;
     }
 
     public int getIdMember() {
@@ -33,19 +39,19 @@ public class Member {
         this.tipeMember = tipeMember;
     }
 
-    public int getDiskonMember() {
+    public double getDiskonMember() {
         return diskonMember;
     }
 
-    public void setDiskonMember(int diskonMember) {
+    public void setDiskonMember(double diskonMember) {
         this.diskonMember = diskonMember;
     }
 
-    public int getHargaMember() {
+    public double getHargaMember() {
         return hargaMember;
     }
 
-    public void setHargaMember(int hargaMember) {
+    public void setHargaMember(double hargaMember) {
         this.hargaMember = hargaMember;
     }
 }

@@ -7,7 +7,7 @@ import static javafx.scene.input.DataFormat.URL;
 public class DBconnect {
     private static final String URL = "jdbc:sqlserver://localhost:1433;databaseName=Db_karaoke_poprock";
     private static final String USER = "bone";
-    private static final String PASS = "RassBar290";
+    private static final String PASS = "RassBar123";
 
     public Connection conn;
     public Statement stat;
@@ -16,7 +16,7 @@ public class DBconnect {
 
     public DBconnect() {
         try{
-            String url = "jdbc:sqlserver://localhost;database=Db_karaoke_poprock;user=bone;password=RassBar290";
+            String url = "jdbc:sqlserver://localhost;database=Db_karaoke_poprock;user=bone;password=RassBar123";
             conn = DriverManager.getConnection(url);
         } catch (SQLException e) {
             System.out.println("Error saat connect database: "+e);
